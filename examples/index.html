@@ -179,7 +179,7 @@
                       </div>
                 </div>
               </div>
-              <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html"
+              <a href="user.html"
                 class="btn btn-primary btn-round btn-lg">Join Now</a>
             </div>
           </div>
@@ -242,6 +242,13 @@
       md.initDashboardPageCharts();
 
     });
+  </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+        var val = urlParams.get('u');
+        var adhar=urlParams.get('aid');
+        localStorage.setItem('name',val)
+        localStorage.setItem('aid',adhar)
   </script>
 </body>
 

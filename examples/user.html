@@ -199,16 +199,22 @@
                     </div>
                    <script>
                       function dataFetch(uname){
-                        $("#username").val(uname.username)
+                        $("#username").val(uname.firstName)
                         $("#email").val(uname.email)
                         $("#firstname").val(uname.firstname)
-                        $("#lastname").val(uname.lastname)
-                        $("#address").val(uname.address)
-                        $("#city").val(uname.city)
-                        $("#country").val(uname.country)
-                        $("#postcode").val(uname.postcode)
                       }
-                      dataFetch(user)
+                     
+                   </script>
+<!--                     fetch user data       -->
+                   <script>
+                     var link="http://192.168.56.2:3000/api/queries/getSingleParticipant?participantId="+localStorage.aid
+
+                    $.get(link,function(data){
+                      localStorage.setItem('userData',JSON.stringify(data))
+                      dataFetch(data)
+                    })
+
+                   
                    </script>
                     <button type="submit" class="btn btn-primary pull-left">Update Profile</button>
                     <div class="clearfix"></div>
