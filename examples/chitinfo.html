@@ -180,8 +180,8 @@
       </nav>
 
       <!-- End Navbar -->
-      <div class="content">
-        <div v-if="status=='pay'" id="app" class="container-fluid">
+      <div id="app" class="content">
+        <div v-if="status=='pay'" class="container-fluid">
           <div class="card card-nav-tabs text-center">
             <div class="card-header card-header-primary">
               <p style="font-size: 2em">₹1,00,000</p>
@@ -193,6 +193,23 @@
               <p class="card-text">Pay earlier to earn more trust points.</p>
               <br>
               <a href="payment.html" class="btn btn-primary">
+                <p style="font-size: 1.5em">PAY NOW<br><span style="font-size: 1.55em"> ₹8000 </span></p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div v-else-if="status=='paid'" class="container-fluid">
+          <div class="card card-nav-tabs text-center">
+            <div class="card-header card-header-primary">
+              <p style="font-size: 2.3em;color: rgb(255, 92, 92);">Bid about to start!!!</p>
+            </div>
+            <br>
+            <div class="card-body">
+              <h4 class="card-title">Waiting for others to pay monthly term. </h4>
+              <br>
+              <p class="card-text">Pay earlier to earn more trust points.</p>
+              <br>
+              <a href="bid_start.html" class="btn btn-primary">
                 <p style="font-size: 1.5em">PAY NOW<br><span style="font-size: 1.55em"> ₹8000 </span></p>
               </a>
             </div>
@@ -322,7 +339,16 @@
         const val = urlParams.get('paid');
         if (val == 'yes')
         {
-          this.status = 'paid'
+          this.status = 'paid';
+          if (!localStorage.remaining)
+            localStorage.setItem("remaining", "3");
+          else localStorage.remaining--;
+          if (0 == localStorage.remaining)
+          {
+            localStorage.setItem("remaining", "3");
+            window.location.href("");
+          }
+          alert(localStorage.remaining)
         }
       },
     })
