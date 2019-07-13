@@ -18,9 +18,18 @@
 
 <head>
   <meta charset="utf-8" />
-  <style>
-     
-  </style>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);    
+    if (!localStorage.remaining)
+      localStorage.setItem("remaining", "3");
+    else localStorage.remaining--;
+    if (0 == localStorage.remaining)
+    {
+      localStorage.setItem("remaining", "3");
+      window.location.href("");
+    }
+    alert(localStorage.remaining)
+  </script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
