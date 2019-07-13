@@ -1,0 +1,16 @@
+/**
+ * New query file
+ */
+query getSingleChit{
+description: "get chit info"
+statement:
+      SELECT catchit.chitRecord
+      FROM catchit.chitRecord WHERE (networkId == "1")
+}
+
+query getSingleParticipant{
+description: "get participant info"
+statement:
+      SELECT catchit.chitParticipant
+      FROM catchit.chitParticipant WHERE (aadhaarId == _$participantId)
+}
