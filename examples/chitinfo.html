@@ -207,7 +207,7 @@
             <div class="card-body">
               <h4 class="card-title">Waiting for others to pay monthly term. </h4>
               <br>
-              <p class="card-text">Pay earlier to earn more trust points.</p>
+              <p class="card-text">{{remaining}} participats are remaining to pay monthly term.</p>
               <br>
               <a href="bid_start.html" class="btn btn-primary">
                 <p style="font-size: 1.5em">PAY NOW<br><span style="font-size: 1.55em"> ₹8000 </span></p>
@@ -331,7 +331,8 @@
       el: '#app',
       data: {
         message: 'Hello Vue!',
-        status: 'pay'
+        status: 'pay',
+        remaining: -1
       },
       created: function ()    
       {
@@ -346,9 +347,10 @@
           if (0 == localStorage.remaining)
           {
             localStorage.setItem("remaining", "3");
-            window.location.href("");
+            window.location.href = "/";
           }
-          alert(localStorage.remaining)
+          this.remaining = localStorage.remaining;
+          //alert(localStorage.remaining)
         }
       },
     })
