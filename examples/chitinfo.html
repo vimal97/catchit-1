@@ -24,6 +24,7 @@
   <title>
     Material Dashboard by Creative Tim
   </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
     name='viewport' />
   <!--     Fonts and icons     -->
@@ -177,9 +178,10 @@
           </div>
         </div>
       </nav>
+
       <!-- End Navbar -->
       <div class="content">
-        <div class="container-fluid">
+        <div v-if="status=='pay'" id="app" class="container-fluid">
           <div class="card card-nav-tabs text-center">
             <div class="card-header card-header-primary">
               <p style="font-size: 2em">₹1,00,000</p>
@@ -307,6 +309,24 @@
     </div>
   </div>
   <!--   Core JS Files   -->
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        status: 'pay'
+      },
+      created: function ()    
+      {
+        const urlParams = new URLSearchParams(window.location.search);
+        const val = urlParams.get('paid');
+        if (val == 'yes')
+        {
+          this.status = 'paid'
+        }
+      },
+    })
+  </script>
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
