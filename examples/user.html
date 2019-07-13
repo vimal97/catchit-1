@@ -16,8 +16,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+  <script src="../assets/js/core/jquery.min.js"></script>
+
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+
+  <script>
+    var user={username:'vimal',email:'vimal@gmail.com',firstname:'Vimal',lastname:'P',address:'address',city:'Ernakulam',country:'India',postcode:'682308'}
+  </script>
 </head>
 
 <body class="">
@@ -144,13 +150,13 @@
                       <div class="col-md-3">
                         <div class="form-group">
                           <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="username">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control">
+                          <input type="email" class="form-control" id="email">
                         </div>
                       </div>
                     </div>
@@ -158,13 +164,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="firstname">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Last Name</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="lastname">
                         </div>
                       </div>
                     </div>
@@ -172,7 +178,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="address">
                         </div>
                       </div>
                     </div>
@@ -180,23 +186,35 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">City</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="city">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="country">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Postal Code</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="postcode">
                         </div>
                       </div>
                     </div>
-                   
+                   <script>
+                      function dataFetch(uname){
+                        $("#username").val(uname.username)
+                        $("#email").val(uname.email)
+                        $("#firstname").val(uname.firstname)
+                        $("#lastname").val(uname.lastname)
+                        $("#address").val(uname.address)
+                        $("#city").val(uname.city)
+                        $("#country").val(uname.country)
+                        $("#postcode").val(uname.postcode)
+                      }
+                      dataFetch(user)
+                   </script>
                     <button type="submit" class="btn btn-primary pull-left">Update Profile</button>
                     <div class="clearfix"></div>
                   </form>
@@ -212,7 +230,6 @@
   </div>
  
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
