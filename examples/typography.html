@@ -21,6 +21,8 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link href="../assets/css/circle.css" rel="stylesheet" />
+  <script src="../assets/js/core/jquery.min.js"></script>
+
 </head>
 
 <body class="">
@@ -131,100 +133,54 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card card-plain">
-                
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card-body">
-                      <div class="card card-nav-tabs text-center">
-                        <div class="card-header card-header-primary">
-                          <b style="font-size: 30px">&#8377;100000</b>  
-                        </div>
-                        <div class="card-body">
-                          <div class="clearfix"  style="padding-left:25%">
-                              <div class="c100 p50">
-                                  <span>50%</span>
-                                  <div class="slice">
-                                      <div class="bar"></div>
-                                      <div class="fill"></div>
-                                  </div>
-                              </div>
-                          </div>
-                        
-                          <h4 class="card-title">10 Participants</h4>
-                          <a href="chitinfo.html?r=100000" style="margin-top:25px;" class="btn btn-primary">More..</a>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-plain">
-                
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card-body">
-                      <div class="card card-nav-tabs text-center">
-                        <div class="card-header card-header-primary">
-                           <b style="font-size: 30px">&#8377;200000</b> 
-                        </div>
-                        <div class="card-body">
-                          <div class="clearfix"  style="padding-left:25%">
-                              <div class="c100 p40">
-                                  <span>40%</span>
-                                  <div class="slice">
-                                      <div class="bar"></div>
-                                      <div class="fill"></div>
-                                  </div>
-                              </div>
-                          </div>
-                        
-                          <h4 class="card-title">20 Participants</h4>
-                          <a href="chitinfo.html?r=200000" style="margin-top:25px;" class="btn btn-primary">More..</a>
-                        </div>
-                       
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-plain">
-                
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card-body">
-                      <div class="card card-nav-tabs text-center">
-                        <div class="card-header card-header-primary">
-                           <b style="font-size: 30px">&#8377;300000</b> 
-                        </div>
-                        <div class="card-body">
-                          <div class="clearfix"  style="padding-left:25%">
-                              <div class="c100 p70">
-                                  <span>70%</span>
-                                  <div class="slice">
-                                      <div class="bar"></div>
-                                      <div class="fill"></div>
-                                  </div>
-                              </div>
-                          </div>
-                        
-                          <h4 class="card-title">30 Participants</h4>
-                          <a href="chitinfo.html?r=300000" style="margin-top:25px;" class="btn btn-primary">More..</a>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="row" id="container1">
+            <script>
+              var obj1=[
+{"$class":"catchit.chitRecord","networkId":"1","terms":3,"ratePerMonth":1000,"statusOfBid":0,"participantCount":3,"countMonPaid":0,"currentParticipants":0,"bids":[],"customers":["resource.catchit.chitParticipant#1"],"paidCustomers":[],"currentMonthWinner":"resource:catchit.chitParticipant#7197"}
+]              
+function addCard(obj){
+ if(obj1[0].customers[0].replace('resource.catchit.chitParticipant#','')==localStorage.aid){
+   var html='<div class="col-md-4">'+
+                  '<div class="card card-plain">'+
+                    
+                    '<div class="row">'+
+                      '<div class="col-md-12">'+
+                        '<div class="card-body">'+
+                          '<div class="card card-nav-tabs text-center">'+
+                            '<div class="card-header card-header-primary">'+
+                              '<b style="font-size: 30px">&#8377;3000</b>'+  
+                            '</div>'+
+                            '<div class="card-body">'+
+                              '<div class="clearfix"  style="padding-left:25%">'+
+                                  '<div class="c100 p50">'+
+                                      '<span>50%</span>'+
+                                      '<div class="slice">'+
+                                          '<div class="bar"></div>'+
+                                         '<div class="fill"></div>'+
+                                      '</div>'+
+                                  '</div>'+
+                              '</div>'+
+                            
+                              '<h4 class="card-title">10 Participants</h4>'+
+                              '<a href="chitinfo.html?r=100000" style="margin-top:25px;" class="btn btn-primary">More..</a>'+
+                            '</div>'+
+                            
+                          '</div>'+
+                       '</div>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'
+
+          $("#container1").append(html)
+ }
+}
+         $.get('http://192.168.56.2:3000/api/queries/getSingleChit',function(data){
+           addCard(data)
+         })  
+            </script>
+              
+        
           </div>
         </div>
       </div>
@@ -233,7 +189,6 @@
   </div>
  
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
