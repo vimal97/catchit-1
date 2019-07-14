@@ -34,6 +34,8 @@
   <link href="../assets/css/circle.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <script src="../assets/js/core/jquery.min.js"></script>
+
   <style>
 
 .dark-area {
@@ -163,7 +165,7 @@
       <div class="content">
         <div class="container-fluid">
         	   <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" id="card1" style="display: none">
             <div class="card card-nav-tabs text-center">
               <div class="card-header card-header-primary">
                 <p style="font-size: 2em">₹3,000</p>
@@ -177,7 +179,20 @@
               </div>
             </div>
           </div>
+<script>
+  var obj1=[
+{"$class":"catchit.chitRecord","networkId":"1","terms":3,"ratePerMonth":1000,"statusOfBid":0,"participantCount":3,"countMonPaid":0,"currentParticipants":0,"bids":[],"customers":["resource.catchit.chitParticipant#1"],"paidCustomers":[],"currentMonthWinner":"resource:catchit.chitParticipant#7197"}
+]
+function showCard(obj){
+  if(obj1[0].customers[0].replace('resource.catchit.chitParticipant#','')!=localStorage.aid){
+    $("#card1").show()
+  }
+}
+$.get('http://192.168.56.2:3000/api/queries/getSingleChit',function(data){
+           showCard(data)
+         })  
 
+</script>
           <div class="col-md-4">
             <div class="card card-nav-tabs text-center">
               <div class="card-header card-header-primary">
@@ -240,7 +255,6 @@
 
 
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
