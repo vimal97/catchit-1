@@ -1,14 +1,65 @@
+<!--
+=========================================================
+ Material Dashboard - v2.1.1
+=========================================================
+
+ Product Page: https://www.creative-tim.com/product/material-dashboard
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ Licensed under MIT (https://github.com/creativetimofficial/material-dashboard/blob/master/LICENSE.md)
+
+ Coded by Creative Tim
+
+=========================================================
+
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
+  <style>
+      * {
+        box-sizing: border-box;
+      }
+      
+      #myInput {
+        background-image: url('/css/searchicon.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+      
+      #myTable {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+      }
+      
+      #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+      }
+      
+      #myTable tr {
+        border-bottom: 1px solid #ddd;
+      }
+      
+      #myTable tr.header, #myTable tr:hover {
+        background-color: #f1f1f1;
+      }
+      </style>
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Profile
+    Join Chits
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -16,14 +67,44 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
-  <script src="../assets/js/core/jquery.min.js"></script>
-
+  <link href="../assets/css/circle.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <style>
 
+.dark-area {
+                background-color: #666;
+                padding: 40px;
+                margin: 0 -40px 20px -40px;
+                clear: both;
+            }
+
+            .clearfix:before,.clearfix:after {content: " "; display: table;}
+            .clearfix:after {clear: both;}
+            .clearfix {*zoom: 1;}
+  </style>
   <script>
-    var user={username:'vimal',email:'vimal@gmail.com',firstname:'Vimal',lastname:'P',address:'address',city:'Ernakulam',country:'India',postcode:'682308'}
-  </script>
+    document.getElementById('myTable').style.display = "none";
+      function myFunction() {
+        document.getElementById('myTable').style.display = "block";
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+      </script>
 </head>
 
 <body class="">
@@ -36,20 +117,20 @@
     -->
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          
+         
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-         
-          <li class="nav-item active ">
+          
+          <li class="nav-item ">
             <a class="nav-link" href="./user.html">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./transaction.html">
+            <a class="nav-link" href="./tables.html">
               <i class="material-icons">content_paste</i>
               <p>Transactions</p>
             </a>
@@ -57,16 +138,21 @@
           <li class="nav-item ">
             <a class="nav-link" href="./typography.html">
               <i class="material-icons">library_books</i>
-              <p>My chits</p>
+              <p>My Chits</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="./icons.html">
               <i class="material-icons">bubble_chart</i>
               <p>Join Chits</p>
             </a>
           </li>
-          
+          <li class="nav-item active ">
+              <a class="nav-link" href="./referral.html">
+                <i class="material-icons">bubble_chart</i>
+                <p>Trust Levels</p>
+              </a>
+            </li>
           <li class="nav-item ">
             <a class="nav-link" href="./notifications.html">
               <i class="material-icons">notifications</i>
@@ -74,7 +160,7 @@
             </a>
           </li>
           
-         
+          
         </ul>
       </div>
     </div>
@@ -83,7 +169,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">User Profile</a>
+            <a class="navbar-brand" href="#pablo">Request verified profiles to reffer so as to increase trust levels</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -94,6 +180,14 @@
           <div class="collapse navbar-collapse justify-content-end">
             
             <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#pablo">
+                  <i class="material-icons">dashboard</i>
+                  <p class="d-lg-none d-md-block">
+                    Stats
+                  </p>
+                </a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
@@ -131,107 +225,168 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">User Profile</h4>
-                  
-                </div>
-                <div class="card-body">
-                  <form>
-                    <div class="row">
-                      
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control" id="username">
+        	      <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title">Current Trust Level</h4>
+                            </div>
+                            <div class="card-body">
+                                  <h2 style="text-align : center;"><b><script>document.write(JSON.parse(localStorage.userData)[0].bonusPoints);</script> pts</b></h2>
+                            </div>
                         </div>
                       </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control" id="email">
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
                         </div>
-                      </div>
+                        <div class="card-body">
+                            <table id="myTable">
+                                <tr class="header">
+                                  <th style="width:60%;">Name</th>
+                                  <th style="width:40%;">Country</th>
+                                  <th style="width:40%;">Request</th>
+                                </tr>
+                                <tr>
+                                  <td>Dhinesh Balan</td>
+                                  <td>Ernakulam</td>
+                                  <td><button style="background-color:green;color:white;border-radius:4px;">Request</button></td>
+                                </tr>
+                                <tr>
+                                  <td>Sudhesh M</td>
+                                  <td>Ernakulam</td>
+                                  <td><button style="background-color:green;color:white;border-radius:4px;">Request</button></td>
+                                </tr>
+                                <tr>
+                                  <td>Manu Mohan</td>
+                                  <td>Muvattupuzha</td>
+                                  <td><button style="background-color:green;color:white;border-radius:4px;">Request</button></td>
+                                </tr>
+                                <tr>
+                                  <td>Madhavan K</td>
+                                  <td>Ernakulam</td>
+                                  <td><button style="background-color:green;color:white;border-radius:4px;">Request</button></td>
+                                </tr>
+                                <tr>
+                                  <td>Sidharth Mohan</td>
+                                  <td>Ernakulam</td>
+                                  <td><button style="background-color:green;color:white;border-radius:4px;">Request</button></td>
+                                </tr>
+                              </table>
+                        </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" class="form-control" id="firstname">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Last Name</label>
-                          <input type="text" class="form-control" id="lastname">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control" id="address">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">City</label>
-                          <input type="text" class="form-control" id="city">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control" id="country">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Postal Code</label>
-                          <input type="tedataFetchxt" class="form-control" id="postcode">
-                        </div>
-                      </div>
-                    </div>
-                   <script>
-                      function dataFetch(uname){
-                        $("#username").val(uname.firstName)
-                        $("#email").val(uname.email)
-                        $("#firstname").val(uname.firstname)
-                      }
-                     
-                   </script>
-<!--                     fetch user data       -->
-                   <script>
-                     var link="http://10.20.5.127:2021/api/queries/getSingleParticipant?participantId="+localStorage.aid
-                    $.get(link,function(data){
-                      localStorage.setItem('userData',JSON.stringify(data))
-                      $("#username").val(data[0].firstName)
-                        $("#email").val(data[0].email)
-                        $("#firstname").val(data[0].firstname)
-                    })
-
-                   
-                   </script>
-                    <button type="submit" class="btn btn-primary pull-left">Update Profile</button>
-                    <div class="clearfix"></div>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
-           
           </div>
         </div>
       </div>
-      
+      <footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="https://www.creative-tim.com">
+                  Creative Tim
+                </a>
+              </li>
+              <li>
+                <a href="https://creative-tim.com/presentation">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="http://blog.creative-tim.com">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="https://www.creative-tim.com/license">
+                  Licenses
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, made with <i class="material-icons">favorite</i> by
+            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
- 
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Filters</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger active-color">
+            <div class="badge-colors ml-auto mr-auto">
+              <span class="badge filter badge-purple" data-color="purple"></span>
+              <span class="badge filter badge-azure" data-color="azure"></span>
+              <span class="badge filter badge-green" data-color="green"></span>
+              <span class="badge filter badge-warning" data-color="orange"></span>
+              <span class="badge filter badge-danger" data-color="danger"></span>
+              <span class="badge filter badge-rose active" data-color="rose"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="header-title">Images</li>
+        <li class="active">
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../assets/img/sidebar-1.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../assets/img/sidebar-2.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../assets/img/sidebar-3.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../assets/img/sidebar-4.jpg" alt="">
+          </a>
+        </li>
+        <li class="button-container">
+          <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
+        </li>
+        <!-- <li class="header-title">Want more components?</li>
+            <li class="button-container">
+                <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
+                  Get the pro version
+                </a>
+            </li> -->
+        <li class="button-container">
+          <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
+            View Documentation
+          </a>
+        </li>
+        <li class="button-container github-star">
+          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        </li>
+        <li class="header-title">Thank you for 95 shares!</li>
+        <li class="button-container text-center">
+          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
+          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+          <br>
+          <br>
+        </li>
+      </ul>
+    </div>
+  </div>
   <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
