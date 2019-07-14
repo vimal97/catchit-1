@@ -2,15 +2,11 @@
 =========================================================
  Material Dashboard - v2.1.1
 =========================================================
-
  Product Page: https://www.creative-tim.com/product/material-dashboard
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
  Licensed under MIT (https://github.com/creativetimofficial/material-dashboard/blob/master/LICENSE.md)
-
  Coded by Creative Tim
-
 =========================================================
-
  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 
 <!DOCTYPE html>
@@ -34,15 +30,15 @@
   <link href="../assets/css/circle.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  <style>
+  <script src="../assets/js/core/jquery.min.js"></script>
 
+  <style>
 .dark-area {
                 background-color: #666;
                 padding: 40px;
                 margin: 0 -40px 20px -40px;
                 clear: both;
             }
-
             .clearfix:before,.clearfix:after {content: " "; display: table;}
             .clearfix:after {clear: both;}
             .clearfix {*zoom: 1;}
@@ -54,7 +50,6 @@
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo" style="color: darkgreen">
@@ -88,13 +83,6 @@
               <p>Join Chits</p>
             </a>
           </li>
-
-          <li class="nav-item ">
-              <a class="nav-link" href="./referral.html">
-                <i class="material-icons">bubble_chart</i>
-                <p>Trust Levels</p>
-              </a>
-            </li>
           
           <li class="nav-item ">
             <a class="nav-link" href="./notifications.html">
@@ -123,7 +111,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             
             <ul class="navbar-nav">
-
+              
               <li class="nav-item dropdown">
                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
@@ -162,7 +150,7 @@
       <div class="content">
         <div class="container-fluid">
         	   <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" id="card1" style="display: none">
             <div class="card card-nav-tabs text-center">
               <div class="card-header card-header-primary">
                 <p style="font-size: 2em">₹3,000</p>
@@ -171,12 +159,23 @@
                 <h4 class="card-title">Number of Participants : 3</h4>
                 <a onclick="joinChit();" class="btn btn-primary" style="color:white;">Join</a>
               </div>
-              <div class="card-footer text-muted" >
-               <b style="color: red"> ! Filling Fast </b>
-              </div>
+              <div class="card-footer text-muted">
+            <b style="color: red">! &nbsp;Filling Fast &nbsp;!</b>              </div>
             </div>
           </div>
-
+<script>
+  var obj1=[
+{"$class":"catchit.chitRecord","networkId":"1","terms":3,"ratePerMonth":1000,"statusOfBid":0,"participantCount":3,"countMonPaid":0,"currentParticipants":0,"bids":[],"customers":["resource.catchit.chitParticipant#1"],"paidCustomers":[],"currentMonthWinner":"resource:catchit.chitParticipant#7197"}
+]
+function showCard(obj){
+  if(obj1[0].customers[0].replace('resource.catchit.chitParticipant#','')!=localStorage.aid){
+    $("#card1").show()
+  }
+}
+$.get('http://192.168.56.2:3000/api/queries/getSingleChit',function(data){
+           showCard(data)
+         })  
+</script>
           <div class="col-md-4">
             <div class="card card-nav-tabs text-center">
               <div class="card-header card-header-primary">
@@ -187,7 +186,7 @@
                 <a class="btn btn-primary" style="color:white">Join</a>
               </div>
               <div class="card-footer text-muted">
-               <b style="color: red"> ! Filling Fast </b>
+                <b style="color: red">! &nbsp;Filling Fast &nbsp;!</b>
               </div>
             </div>
           </div>
@@ -202,7 +201,7 @@
                 <a class="btn btn-primary" style="color:white">Join</a>
               </div>
               <div class="card-footer text-muted">
-               &nbsp;
+              <b style="color: red">! &nbsp;Filling Fast &nbsp;!</b>
               </div>
             </div>
           </div>
@@ -215,44 +214,10 @@
           </div>
         </div>
       </div>
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-          </div>
-        </div>
-      </footer>
+
     </div>
   </div>
-  
+
 
 
   <script>
@@ -273,7 +238,6 @@
 
 
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -319,24 +283,16 @@
     $(document).ready(function() {
       $().ready(function() {
         $sidebar = $('.sidebar');
-
         $sidebar_img_container = $sidebar.find('.sidebar-background');
-
         $full_page = $('.full-page');
-
         $sidebar_responsive = $('body > .navbar-collapse');
-
         window_width = $(window).width();
-
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
         if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
           if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
             $('.fixed-plugin .dropdown').addClass('open');
           }
-
         }
-
         $('.fixed-plugin a').click(function(event) {
           // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
           if ($(this).hasClass('switch-trigger')) {
@@ -347,141 +303,104 @@
             }
           }
         });
-
         $('.fixed-plugin .active-color span').click(function() {
           $full_page_background = $('.full-page-background');
-
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
-
           var new_color = $(this).data('color');
-
           if ($sidebar.length != 0) {
             $sidebar.attr('data-color', new_color);
           }
-
           if ($full_page.length != 0) {
             $full_page.attr('filter-color', new_color);
           }
-
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data-color', new_color);
           }
         });
-
         $('.fixed-plugin .background-color .badge').click(function() {
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
-
           var new_color = $(this).data('background-color');
-
           if ($sidebar.length != 0) {
             $sidebar.attr('data-background-color', new_color);
           }
         });
-
         $('.fixed-plugin .img-holder').click(function() {
           $full_page_background = $('.full-page-background');
-
           $(this).parent('li').siblings().removeClass('active');
           $(this).parent('li').addClass('active');
-
-
           var new_image = $(this).find("img").attr('src');
-
           if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
             $sidebar_img_container.fadeOut('fast', function() {
               $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
               $sidebar_img_container.fadeIn('fast');
             });
           }
-
           if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
             var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
             $full_page_background.fadeOut('fast', function() {
               $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
               $full_page_background.fadeIn('fast');
             });
           }
-
           if ($('.switch-sidebar-image input:checked').length == 0) {
             var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
             var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
             $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
             $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
           }
-
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
           }
         });
-
         $('.switch-sidebar-image input').change(function() {
           $full_page_background = $('.full-page-background');
-
           $input = $(this);
-
           if ($input.is(':checked')) {
             if ($sidebar_img_container.length != 0) {
               $sidebar_img_container.fadeIn('fast');
               $sidebar.attr('data-image', '#');
             }
-
             if ($full_page_background.length != 0) {
               $full_page_background.fadeIn('fast');
               $full_page.attr('data-image', '#');
             }
-
             background_image = true;
           } else {
             if ($sidebar_img_container.length != 0) {
               $sidebar.removeAttr('data-image');
               $sidebar_img_container.fadeOut('fast');
             }
-
             if ($full_page_background.length != 0) {
               $full_page.removeAttr('data-image', '#');
               $full_page_background.fadeOut('fast');
             }
-
             background_image = false;
           }
         });
-
         $('.switch-sidebar-mini input').change(function() {
           $body = $('body');
-
           $input = $(this);
-
           if (md.misc.sidebar_mini_active == true) {
             $('body').removeClass('sidebar-mini');
             md.misc.sidebar_mini_active = false;
-
             $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
           } else {
-
             $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
             setTimeout(function() {
               $('body').addClass('sidebar-mini');
-
               md.misc.sidebar_mini_active = true;
             }, 300);
           }
-
           // we simulate the window Resize so the charts will get updated in realtime.
           var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
           }, 180);
-
           // we stop the simulation of Window Resize after the animations are completed
           setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
-
         });
       });
     });
