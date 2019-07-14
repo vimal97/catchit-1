@@ -166,12 +166,11 @@
           <div class="col-md-4">
             <div class="card card-nav-tabs text-center">
               <div class="card-header card-header-primary">
-                <p style="font-size: 2em">₹1,00,000</p>
+                <p style="font-size: 2em">₹3,000</p>
               </div>
               <div class="card-body">
-                <h4 class="card-title">Special title treatment</h4>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="chitinfo.html" class="btn btn-primary">Open</a>
+                <h4 class="card-title">Number of Participants : 3</h4>
+                <a onclick="joinChit();" class="btn btn-primary" style="color:white;">Join</a>
               </div>
               <div class="card-footer text-muted">
                 3 Months remaining
@@ -182,12 +181,11 @@
           <div class="col-md-4">
             <div class="card card-nav-tabs text-center">
               <div class="card-header card-header-primary">
-                <p style="font-size: 2em">₹30,000</p>
+                <p style="font-size: 2em">₹20,000</p>
               </div>
               <div class="card-body">
-                <h4 class="card-title">Special title treatment</h4>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="chitinfo.html" class="btn btn-primary">Open</a>
+                <h4 class="card-title">Number of Participants : 20</h4>
+                <a class="btn btn-primary" style="color:white">Join</a>
               </div>
               <div class="card-footer text-muted">
                 2 Months remaining
@@ -201,9 +199,8 @@
                 <p style="font-size: 2em">₹5,00,000</p>
               </div>
               <div class="card-body">
-                <h4 class="card-title">Special title treatment</h4>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="chitinfo.html" class="btn btn-primary">Open</a>
+                <h4 class="card-title">Number of Participants : 10</h4>
+                <a class="btn btn-primary" style="color:white">Join</a>
               </div>
               <div class="card-footer text-muted">
                 5 Months remaining
@@ -324,6 +321,25 @@
       </ul>
     </div>
   </div>
+
+
+  <script>
+    function joinChit(){
+      $.post("http://10.20.5.127:2021/api/addNewUser", 
+      {
+        "$class": "catchit.addNewUser",
+        "chit": "resource:catchit.chitRecord#1",
+        "newParticipant": "resource:catchit.chitParticipant#1"
+      }
+        , function(result){
+        console.log(result);
+        setTimeout(function(){window.location.href = "typography.html"},3000)
+      });
+                    
+    }
+  </script>
+
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>

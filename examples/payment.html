@@ -71,10 +71,23 @@
                             </li>
                         </ul>
                         <br/>
-                        <a href="chitinfo.html?paid=yes" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+                        <a onclick="paymentDone();" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
                     </div>
                 </div>
             </div>
-
+            <script>
+                function paymentDone(){
+                    $.post("http://10.20.5.127:2021/api/ackMonthlyPay", 
+                    {
+                        "$class": "catchit.ackMonthlyPay",
+                        "customer": "resource:catchit.chitParticipant#1",
+                        "chit": "resource:catchit.chitRecord#1"
+                    }
+                        , function(result){
+                        console.log(result);
+                        setTimeout(function(){window.location.href = "chitinfo.html?paid=yes"},3000)
+                    });
+                }
+            </script>
     </body>
 </html>
